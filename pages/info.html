@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Доставка букетов Aura Flora по городу за 2 часа. Контакты, адрес, режим работы. Быстрая и аккуратная доставка цветов." />
+  <meta name="keywords" content="доставка цветов, доставка букетов, контакты, адрес, режим работы" />
+  <meta name="author" content="Aura Flora" />
+
+  <meta property="og:title" content="Доставка и контакты — Aura Flora" />
+  <meta property="og:description" content="Доставка авторских букетов по городу за 2 часа. Свяжитесь с нами." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="../styles/style.css" />
+
+  <style>
+    .header { background: rgba(245,240,232,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,13,11,0.08); }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(13,13,11,0.08);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      cursor: none;
+      font-family: var(--font-serif);
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 400;
+      color: var(--c-dark);
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
+    }
+
+    .faq-question:hover { color: var(--c-mid); }
+
+    .faq-icon {
+      width: 28px; height: 28px;
+      border: 1px solid rgba(13,13,11,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--c-muted);
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--c-dark);
+      color: var(--c-cream);
+      border-color: var(--c-dark);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-smooth), padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--c-muted);
+      line-height: 1.9;
+      padding-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      aspect-ratio: 16/7;
+      background: linear-gradient(135deg, #1A2E1B 0%, #2C3E2D 50%, #4A5E4B 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder__label {
+      font-family: var(--font-serif);
+      font-size: clamp(16px, 2vw, 24px);
+      font-weight: 300;
+      color: rgba(245,240,232,0.4);
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-field.full { grid-column: span 2; }
+
+    .form-field label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--c-cream);
+      background: rgba(245,240,232,0.05);
+      border: 1px solid rgba(245,240,232,0.12);
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      resize: none;
+      letter-spacing: 0.02em;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: rgba(245,240,232,0.2);
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--c-gold);
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="page-overlay" aria-hidden="true"></div>
+
+  <header class="header header--inner role="banner">
+    <a href="../index.html" class="logo" aria-label="Aura Flora — на главную">
+      Aura <span>Flora</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Основная навигация">
+      <a href="../index.html"   class="nav__link">Главная</a>
+      <a href="flowers.html"   class="nav__link">Каталог</a>
+      <a href="about.html"     class="nav__link">О нас</a>
+      <a href="info.html"      class="nav__link active">Доставка</a>
+      <a href="flowers.html"   class="nav__cta">Заказать букет</a>
+    </nav>
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Мобильная навигация">
+    <a href="../index.html" class="mobile-nav__link">Главная</a>
+    <a href="flowers.html"  class="mobile-nav__link">Каталог</a>
+    <a href="about.html"    class="mobile-nav__link">О нас</a>
+    <a href="info.html"     class="mobile-nav__link">Доставка</a>
+  </nav>
+
+  <main role="main">
+
+    <section class="page-hero" aria-label="Доставка и контакты">
+      <div class="page-hero__bg" style="background: linear-gradient(150deg, #C9A96E, #6B5030); opacity:0.3;" aria-hidden="true"></div>
+      <div class="page-hero__inner">
+        <p class="page-hero__label">Условия и связь</p>
+        <h1 class="page-hero__title">Доставка <em>и контакты</em></h1>
+      </div>
+    </section>
+
+    <section class="info-section" aria-label="Информация о доставке">
+      <div class="info-section__inner">
+
+        <div class="info-grid">
+
+          <div>
+            <p class="section-label reveal">Доставка</p>
+            <h2 class="info-block__title reveal delay-1">Условия<br>и тарифы</h2>
+
+            <div class="info-list reveal delay-2">
+
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Доставка по городу</span>
+                <span class="info-list__value">от 300 ₽</span>
+              </div>
+
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Срочная доставка (2 часа)</span>
+                <span class="info-list__value">от 600 ₽</span>
+              </div>
+
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Бесплатная доставка (от 7 000 ₽)</span>
+                <span class="info-list__value">0 ₽</span>
+              </div>
+
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Самовывоз из бутика</span>
+                <span class="info-list__value">Бесплатно</span>
+              </div>
+
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Минимальный заказ</span>
+                <span class="info-list__value">1 500 ₽</span>
+              </div>
+
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Анонимная доставка</span>
+                <span class="info-list__value">Доступна</span>
+              </div>
+
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Доставка за город (до 30 км)</span>
+                <span class="info-list__value">от 1 200 ₽</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div>
+            <p class="section-label reveal">Режим работы</p>
+            <h2 class="info-block__title reveal delay-1">Мы открыты<br>каждый день</h2>
+
+            <div class="info-list reveal delay-2">
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Понедельник — пятница</span>
+                <span class="info-list__value">09:00 – 21:00</span>
+              </div>
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Суббота</span>
+                <span class="info-list__value">10:00 – 20:00</span>
+              </div>
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Воскресенье</span>
+                <span class="info-list__value">10:00 – 18:00</span>
+              </div>
+              <div class="info-list__item">
+                <div class="info-list__icon"></div>
+                <span class="info-list__label">Приём заказов онлайн</span>
+                <span class="info-list__value">Круглосуточно</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 48px;" class="reveal delay-3">
+              <p class="section-label" style="margin-bottom: 20px;">Как нас найти</p>
+              <p style="font-size:14px;font-weight:300;color:var(--c-muted);line-height:1.8;">
+                ул. Флористическая, 7, 2-й этаж<br>
+                м. Цветочная, 5 минут пешком<br>
+                <br>
+                Парковка доступна со двора.<br>
+                Вход с главного фасада.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-bottom: clamp(80px, 10vw, 160px)">
+          <p class="section-label reveal">Вопросы и ответы</p>
+          <h2 class="section-title reveal delay-1" style="margin-bottom: clamp(40px,5vw,80px)">
+            Часто <em>спрашивают</em>
+          </h2>
+
+          <div class="faq-list reveal delay-2" role="list">
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span>Можно ли указать точное время доставки?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" aria-hidden="true">
+                <p>Да, при оформлении заказа вы можете выбрать удобный двухчасовой интервал доставки.
+                   Наш курьер свяжется с вами за 30 минут до приезда. Для срочной доставки в течение
+                   1 часа уточните наличие такой возможности по телефону.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span>Как долго простоит букет?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" aria-hidden="true">
+                <p>При правильном уходе свежесрезанные цветы стоят от 5 до 14 дней. К каждому букету
+                   прилагается карточка с инструкцией по уходу. Основные рекомендации: чистая вода,
+                   смена воды каждые 2 дня, косой срез, отсутствие прямых солнечных лучей и сквозняков.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span>Можно ли заказать букет сюрприз?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" aria-hidden="true">
+                <p>Конечно! Мы предлагаем анонимную доставку — имя отправителя не сообщается получателю.
+                   Вы также можете добавить открытку с личным посланием или оставить её без подписи.
+                   Мы дискретно передадим букет с доброй улыбкой.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span>Как оформить корпоративный заказ?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" aria-hidden="true">
+                <p>Для корпоративных клиентов мы предлагаем специальные условия: постоянное обслуживание офиса,
+                   оформление мероприятий и конференций, безналичный расчёт с документами. Напишите нам на
+                   hello@auraflora.ru или позвоните — обсудим детали и составим индивидуальное предложение.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                <span>Принимаете ли вы предзаказы?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" aria-hidden="true">
+                <p>Да! Особенно для особых событий — свадеб, юбилеев, праздников — мы рекомендуем оформить
+                   предзаказ за 3–7 дней. Это позволяет нам заблаговременно заказать конкретные цветы
+                   у поставщиков и гарантировать наличие нужного ассортимента.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="reveal-scale">
+          <div class="map-placeholder" role="img" aria-label="Карта расположения бутика">
+            <div style="text-align:center;">
+              <div style="
+                width:60px;height:60px;
+                border:1px solid rgba(245,240,232,0.15);
+                border-radius:50%;
+                margin:0 auto 20px;
+                display:flex;align-items:center;justify-content:center;
+              ">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+                  <path d="M10 0C4.477 0 0 4.477 0 10c0 7.5 10 14 10 14S20 17.5 20 10c0-5.523-4.477-10-10-10zm0 13.5A3.5 3.5 0 1 1 10 6.5a3.5 3.5 0 0 1 0 7z" fill="rgba(201,169,110,0.6)"/>
+                </svg>
+              </div>
+              <p class="map-placeholder__label">
+                ул. Флористическая, 7<br>
+                <span style="font-size:0.7em;opacity:0.5">Карта загружается</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section style="background: var(--c-dark); padding: clamp(80px,10vw,160px) var(--pad-x);" aria-label="Форма обратной связи">
+      <div style="max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(60px,8vw,120px); align-items: start;">
+
+        <div>
+          <p class="section-label reveal" style="color:rgba(201,169,110,0.6)">Напишите нам</p>
+          <h2 class="cta-section__title reveal delay-1">
+            Готовы <em>ответить</em><br>
+            на каждый вопрос
+          </h2>
+
+          <div class="contact-items" style="margin-top: 48px;">
+            <div class="reveal delay-2">
+              <p class="contact-item__label">Телефон</p>
+              <a href="tel:+79001234567" class="contact-item__value">+7 900 123-45-67</a>
+            </div>
+            <div class="reveal delay-3">
+              <p class="contact-item__label">Email</p>
+              <a href="mailto:hello@auraflora.ru" class="contact-item__value">hello@auraflora.ru</a>
+            </div>
+            <div class="reveal delay-4">
+              <p class="contact-item__label">Telegram</p>
+              <a href="#" class="contact-item__value">@auraflora</a>
+            </div>
+            <div class="reveal delay-5">
+              <p class="contact-item__label">Адрес бутика</p>
+              <p class="contact-item__value" style="cursor:default;">ул. Флористическая, 7</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal delay-2">
+          <form action="#" method="post" aria-label="Форма обратной связи" onsubmit="handleFormSubmit(event)">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="name">Ваше имя</label>
+                <input type="text" id="name" name="name" placeholder="Анна" required autocomplete="given-name" />
+              </div>
+              <div class="form-field">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 000 000-00-00" autocomplete="tel" />
+              </div>
+              <div class="form-field full">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="anna@example.com" required autocomplete="email" />
+              </div>
+              <div class="form-field full">
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" rows="5" placeholder="Расскажите о вашем пожелании — повод, цвета, бюджет..."></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn--gold" style="margin-top:8px; width:100%; justify-content:center;">
+              Отправить сообщение
+              <span class="btn__arrow">→</span>
+            </button>
+
+            <p style="font-size:11px;color:rgba(245,240,232,0.2);margin-top:16px;letter-spacing:0.03em;line-height:1.6;">
+              Отправляя форму, вы соглашаетесь с обработкой персональных данных.
+              Ответим в течение 30 минут в рабочее время.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand">Aura <span>Flora</span></div>
+          <p class="footer__tagline">Премиальный флористический бутик.<br>Создаём красоту, которая остаётся в памяти.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram">Ig</a>
+            <a href="#" class="footer__social-link" aria-label="VKontakte">Vk</a>
+            <a href="#" class="footer__social-link" aria-label="Telegram">Tg</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Навигация</p>
+          <ul class="footer__links">
+            <li><a href="../index.html" class="footer__link">Главная</a></li>
+            <li><a href="flowers.html"  class="footer__link">Каталог</a></li>
+            <li><a href="about.html"    class="footer__link">О нас</a></li>
+            <li><a href="info.html"     class="footer__link">Доставка</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Доставка</p>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Условия доставки</a></li>
+            <li><a href="#" class="footer__link">Зоны доставки</a></li>
+            <li><a href="#" class="footer__link">Самовывоз</a></li>
+            <li><a href="#" class="footer__link">Корпоративным</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Контакты</p>
+          <ul class="footer__links">
+            <li><a href="tel:+79001234567" class="footer__link">+7 900 123-45-67</a></li>
+            <li><a href="mailto:hello@auraflora.ru" class="footer__link">hello@auraflora.ru</a></li>
+            <li><a href="#" class="footer__link">Ежедневно 9:00–21:00</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2025 Aura Flora. Все права защищены.</p>
+        <p class="footer__copy">Сделано с вниманием к красоте</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../scripts/main.js" defer></script>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item   = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          i.querySelector('.faq-answer').setAttribute('aria-hidden', 'true');
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          answer.setAttribute('aria-hidden', 'false');
+        }
+      });
+    });
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Отправлено ✓';
+      btn.style.borderColor = '#8A9E8C';
+      btn.style.color = '#8A9E8C';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Отправить сообщение →';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 4000);
+    }
+  </script>
+</body>
+</html>

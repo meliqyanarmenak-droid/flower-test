@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aura Flora — премиальный флористический бутик. Авторские букеты и цветочные композиции в стиле скандинавского минимализма. Доставка по городу." />
+  <meta name="keywords" content="цветы, букеты, флористика, премиум, доставка цветов, авторские букеты" />
+  <meta name="author" content="Aura Flora" />
+
+  <meta property="og:title" content="Aura Flora — Флористический бутик" />
+  <meta property="og:description" content="Премиальные букеты и цветочные kompozиции. Скандинавский минимализм в каждом цветке." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/og-image.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="styles/style.css" />
+
+  <title>Aura Flora — Флористический бутик</title>
+</head>
+<body>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="page-overlay" aria-hidden="true"></div>
+
+  <header class="header" role="banner">
+    <a href="index.html" class="logo" aria-label="Aura Flora — на главную">
+      Aura <span>Flora</span>
+    </a>
+
+    <nav class="nav" role="navigation" aria-label="Основная навигация">
+      <a href="index.html"        class="nav__link">Главная</a>
+      <a href="pages/flowers.html" class="nav__link">Каталог</a>
+      <a href="pages/about.html"   class="nav__link">О нас</a>
+      <a href="pages/info.html"    class="nav__link">Доставка</a>
+      <a href="pages/flowers.html" class="nav__cta">Заказать букет</a>
+    </nav>
+
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Мобильная навигация">
+    <a href="index.html"         class="mobile-nav__link">Главная</a>
+    <a href="pages/flowers.html" class="mobile-nav__link">Каталог</a>
+    <a href="pages/about.html"   class="mobile-nav__link">О нас</a>
+    <a href="pages/info.html"    class="mobile-nav__link">Доставка</a>
+  </nav>
+
+  <main role="main">
+
+    <section class="hero" aria-label="Главный баннер">
+      <div class="hero__bg-wrap" aria-hidden="true">
+        <div class="hero__bg" style="
+          background: linear-gradient(135deg, #2C3E2D 0%, #1A2E1B 30%, #0D0D0B 100%);
+        ">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <ellipse cx="900" cy="200" rx="350" ry="500" fill="none" stroke="#C9A96E" stroke-width="0.5" transform="rotate(-20 900 200)"/>
+            <ellipse cx="900" cy="200" rx="200" ry="380" fill="none" stroke="#8A9E8C" stroke-width="0.5" transform="rotate(-20 900 200)"/>
+            <ellipse cx="200" cy="700" rx="280" ry="400" fill="none" stroke="#C9A96E" stroke-width="0.5" transform="rotate(15 200 700)"/>
+            <line x1="700" y1="0" x2="700" y2="900" stroke="#8A9E8C" stroke-width="0.3" opacity="0.5"/>
+            <circle cx="900" cy="200" r="180" fill="none" stroke="#C9A96E" stroke-width="0.3"/>
+            <circle cx="900" cy="200" r="80" fill="none" stroke="#C9A96E" stroke-width="0.4"/>
+            <ellipse cx="1200" cy="600" rx="200" ry="300" fill="none" stroke="#8A9E8C" stroke-width="0.4" transform="rotate(30 1200 600)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__tag">Флористический бутик · с 2018 года</p>
+
+        <h1 class="hero__title">
+          Искусство<br>
+          <em>живого</em><br>
+          цветка
+        </h1>
+
+        <div class="hero__bottom">
+          <p class="hero__desc">
+            Авторские букеты и цветочные композиции,<br>
+            созданные с любовью к природе<br>
+            и вниманием к деталям.
+          </p>
+
+          <div class="hero__actions">
+            <a href="pages/flowers.html" class="btn btn--light">
+              Смотреть каталог
+              <span class="btn__arrow">→</span>
+            </a>
+            <a href="pages/info.html" class="btn btn--gold">
+              Доставка
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">Scroll</div>
+    </section>
+
+    <div class="marquee-section" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Свежие цветы ежедневно <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Авторские композиции <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Доставка за 2 часа <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Флористы с опытом 10+ лет <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Уникальный дизайн <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Сезонные коллекции <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Корпоративное оформление <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Свадебная флористика <span class="marquee-dot"></span></span>
+      </div>
+    </div>
+
+    <section class="stats" aria-label="Наши достижения">
+      <div class="stats__inner">
+
+        <div class="stat-item reveal">
+          <div class="stat-item__number">
+            <span class="stat-num" data-target="1200">0</span>
+            <span class="stat-item__sup">+</span>
+          </div>
+          <p class="stat-item__label">Букетов создано<br>в 2024 году</p>
+        </div>
+
+        <div class="stat-item reveal delay-1">
+          <div class="stat-item__number">
+            <span class="stat-num" data-target="98">0</span>
+            <span class="stat-item__sup">%</span>
+          </div>
+          <p class="stat-item__label">Довольных<br>клиентов</p>
+        </div>
+
+        <div class="stat-item reveal delay-2">
+          <div class="stat-item__number">
+            <span class="stat-num" data-target="2">0</span>
+            <span class="stat-item__sup">ч</span>
+          </div>
+          <p class="stat-item__label">Быстрая доставка<br>по городу</p>
+        </div>
+
+        <div class="stat-item reveal delay-3">
+          <div class="stat-item__number">
+            <span class="stat-num" data-target="6">0</span>
+            <span class="stat-item__sup">+</span>
+          </div>
+          <p class="stat-item__label">Лет в сфере<br>премиальной флористики</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="products" aria-label="Популярные букеты">
+      <div class="products__inner">
+
+        <div class="products__header">
+          <div>
+            <p class="section-label reveal">Избранное</p>
+            <h2 class="section-title reveal delay-1">
+              Топ <em>букеты</em><br>сезона
+            </h2>
+          </div>
+          <a href="pages/flowers.html" class="btn btn--dark reveal delay-2">
+            Весь каталог
+            <span class="btn__arrow">→</span>
+          </a>
+        </div>
+
+        <div class="products__grid">
+
+          <article class="card card--wide reveal-scale">
+            <div class="card__img-placeholder" style="
+              background: linear-gradient(135deg, #8A9E8C 0%, #6B8070 40%, #4A6355 100%);
+              position: relative;
+            ">
+              <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.2" viewBox="0 0 600 700" aria-hidden="true">
+                <ellipse cx="350" cy="300" rx="200" ry="350" fill="none" stroke="#F5F0E8" stroke-width="1" transform="rotate(-15 350 300)"/>
+                <ellipse cx="350" cy="300" rx="100" ry="250" fill="none" stroke="#C9A96E" stroke-width="0.8" transform="rotate(-15 350 300)"/>
+                <circle cx="350" cy="200" r="80" fill="rgba(245,240,232,0.15)"/>
+                <circle cx="350" cy="200" r="40" fill="rgba(201,169,110,0.2)"/>
+                <line x1="350" y1="280" x2="350" y2="700" stroke="#F5F0E8" stroke-width="0.8"/>
+              </svg>
+              <div style="position:absolute;bottom:0;left:0;right:0;padding:40px;background:linear-gradient(to top, rgba(13,13,11,0.85),transparent)">
+                <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2vw,13px);color:rgba(245,240,232,0.5);letter-spacing:0.1em;text-transform:uppercase;font-size:10px;margin-bottom:8px">Флагманская коллекция</p>
+              </div>
+            </div>
+            <div class="card__overlay" aria-hidden="true"></div>
+            <div class="card__body">
+              <h3 class="card__name">Лесной рассвет</h3>
+              <p class="card__price">от 4 800 ₽</p>
+              <span class="card__action">Смотреть →</span>
+            </div>
+            <a href="pages/flowers.html" class="card-link" aria-label="Букет Лесной рассвет" style="position:absolute;inset:0;z-index:5"></a>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card reveal-scale delay-1">
+            <div class="card__img-placeholder" style="
+              background: linear-gradient(160deg, #C9A96E 0%, #A07C45 50%, #6B5030 100%);
+              position: relative;
+            ">
+              <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.2" viewBox="0 0 400 500" aria-hidden="true">
+                <circle cx="200" cy="180" r="120" fill="none" stroke="#F5F0E8" stroke-width="0.8"/>
+                <circle cx="200" cy="180" r="70" fill="rgba(245,240,232,0.1)"/>
+                <circle cx="200" cy="180" r="30" fill="rgba(245,240,232,0.15)"/>
+                <line x1="200" y1="300" x2="200" y2="500" stroke="#F5F0E8" stroke-width="0.8"/>
+                <line x1="160" y1="380" x2="200" y2="340" stroke="#F5F0E8" stroke-width="0.5"/>
+                <line x1="240" y1="420" x2="200" y2="380" stroke="#F5F0E8" stroke-width="0.5"/>
+              </svg>
+            </div>
+            <div class="card__overlay" aria-hidden="true"></div>
+            <div class="card__body">
+              <h3 class="card__name">Янтарный<br>свет</h3>
+              <p class="card__price">от 3 200 ₽</p>
+              <span class="card__action">Смотреть →</span>
+            </div>
+            <a href="pages/flowers.html" class="card-link" aria-label="Букет Янтарный свет" style="position:absolute;inset:0;z-index:5"></a>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card reveal-scale delay-2">
+            <div class="card__img-placeholder" style="
+              background: linear-gradient(145deg, #2A2A2A 0%, #1A1A1A 50%, #0D0D0B 100%);
+              position: relative;
+            ">
+              <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.25" viewBox="0 0 400 500" aria-hidden="true">
+                <ellipse cx="200" cy="200" rx="150" ry="200" fill="none" stroke="#C9A96E" stroke-width="0.8"/>
+                <ellipse cx="200" cy="200" rx="90" ry="130" fill="none" stroke="#8A9E8C" stroke-width="0.6"/>
+                <circle cx="200" cy="180" r="50" fill="rgba(201,169,110,0.1)"/>
+                <line x1="200" y1="330" x2="200" y2="500" stroke="#C9A96E" stroke-width="0.8"/>
+              </svg>
+            </div>
+            <div class="card__overlay" aria-hidden="true"></div>
+            <div class="card__body">
+              <h3 class="card__name">Полночный<br>сад</h3>
+              <p class="card__price">от 5 600 ₽</p>
+              <span class="card__action">Смотреть →</span>
+            </div>
+            <a href="pages/flowers.html" class="card-link" aria-label="Букет Полночный сад" style="position:absolute;inset:0;z-index:5"></a>
+          </article>
+
+          <article class="card reveal-scale delay-3">
+            <div class="card__img-placeholder" style="
+              background: linear-gradient(155deg, #D4C5A9 0%, #B8A48C 50%, #8B7355 100%);
+              position: relative;
+            ">
+              <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.2" viewBox="0 0 400 500" aria-hidden="true">
+                <ellipse cx="200" cy="180" rx="130" ry="180" fill="none" stroke="#3A3A35" stroke-width="0.8"/>
+                <circle cx="200" cy="160" r="60" fill="rgba(58,58,53,0.1)"/>
+                <line x1="200" y1="340" x2="200" y2="500" stroke="#3A3A35" stroke-width="0.8"/>
+                <line x1="200" y1="420" x2="160" y2="390" stroke="#3A3A35" stroke-width="0.5"/>
+                <line x1="200" y1="460" x2="240" y2="430" stroke="#3A3A35" stroke-width="0.5"/>
+              </svg>
+            </div>
+            <div class="card__overlay" aria-hidden="true"></div>
+            <div class="card__body">
+              <h3 class="card__name">Молочная<br>нежность</h3>
+              <p class="card__price">от 2 800 ₽</p>
+              <span class="card__action">Смотреть →</span>
+            </div>
+            <a href="pages/flowers.html" class="card-link" aria-label="Букет Молочная нежность" style="position:absolute;inset:0;z-index:5"></a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="about-preview" aria-label="О нас">
+      <div class="about-preview__visual">
+        <div style="width:100%;height:100%;background:linear-gradient(160deg, #3A4A3B 0%, #2A3A2B 50%, #1A2A1B 100%);display:flex;align-items:center;justify-content:center;position:relative;">
+          <svg style="width:60%;max-width:300px;opacity:0.3" viewBox="0 0 300 400" aria-hidden="true">
+            <ellipse cx="150" cy="150" rx="120" ry="160" fill="none" stroke="#C9A96E" stroke-width="1"/>
+            <ellipse cx="150" cy="150" rx="70" ry="110" fill="none" stroke="#F5F0E8" stroke-width="0.7"/>
+            <ellipse cx="150" cy="150" rx="30" ry="60" fill="rgba(201,169,110,0.2)"/>
+            <line x1="150" y1="260" x2="150" y2="400" stroke="#8A9E8C" stroke-width="1"/>
+            <ellipse cx="110" cy="320" rx="40" ry="20" fill="none" stroke="#8A9E8C" stroke-width="0.6" transform="rotate(-30 110 320)"/>
+            <ellipse cx="190" cy="360" rx="40" ry="20" fill="none" stroke="#8A9E8C" stroke-width="0.6" transform="rotate(30 190 360)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="about-preview__content">
+        <p class="section-label reveal">Наша история</p>
+        <h2 class="section-title reveal delay-1">
+          Мы верим,<br>что цветы —<br><em>живое искусство</em>
+        </h2>
+
+        <blockquote class="about-preview__quote reveal delay-2">
+          «Каждый букет — это диалог между флористом<br>
+          и природой, записанный на языке цвета.»
+        </blockquote>
+
+        <p class="about-preview__text reveal delay-3">
+          Aura Flora — это флористический бутик, где каждая
+          композиция создаётся вручную с вниманием к деталям.
+          Мы работаем только со свежими цветами от проверенных
+          поставщиков, вдохновляясь эстетикой скандинавского минимализма.
+        </p>
+
+        <a href="pages/about.html" class="btn btn--dark reveal delay-4">
+          Узнать больше о нас
+          <span class="btn__arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="Призыв к действию">
+      <div class="cta-section__bg-text" aria-hidden="true">Flora</div>
+
+      <div class="cta-section__inner">
+        <div class="cta-section__text">
+          <p class="section-label reveal" style="color: rgba(201,169,110,0.6)">Специальный заказ</p>
+          <h2 class="cta-section__title reveal delay-1">
+            Создадим букет<br>
+            <em>вашей мечты</em>
+          </h2>
+          <p class="cta-section__sub reveal delay-2">
+            Индивидуальный дизайн, корпоративное
+            оформление или свадебная флористика —
+            расскажите нам о своём видении.
+          </p>
+        </div>
+
+        <div class="cta-section__actions reveal delay-3">
+          <a href="pages/info.html" class="btn btn--gold">
+            Связаться с нами
+            <span class="btn__arrow">→</span>
+          </a>
+          <a href="pages/flowers.html" class="btn btn--light">
+            Смотреть каталог
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__top">
+
+        <div>
+          <div class="footer__brand">Aura <span>Flora</span></div>
+          <p class="footer__tagline">
+            Премиальный флористический бутик.<br>
+            Создаём красоту, которая остаётся в памяти.
+          </p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram">Ig</a>
+            <a href="#" class="footer__social-link" aria-label="VKontakte">Vk</a>
+            <a href="#" class="footer__social-link" aria-label="Telegram">Tg</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Навигация</p>
+          <ul class="footer__links">
+            <li><a href="index.html"         class="footer__link">Главная</a></li>
+            <li><a href="pages/flowers.html" class="footer__link">Каталог</a></li>
+            <li><a href="pages/about.html"   class="footer__link">О нас</a></li>
+            <li><a href="pages/info.html"    class="footer__link">Доставка</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Каталог</p>
+          <ul class="footer__links">
+            <li><a href="pages/flowers.html" class="footer__link">Букеты</a></li>
+            <li><a href="pages/flowers.html" class="footer__link">Композиции</a></li>
+            <li><a href="pages/flowers.html" class="footer__link">Моно-букеты</a></li>
+            <li><a href="pages/flowers.html" class="footer__link">Свадебные</a></li>
+            <li><a href="pages/flowers.html" class="footer__link">Корпоративные</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Контакты</p>
+          <ul class="footer__links">
+            <li><a href="tel:+79001234567" class="footer__link">+7 900 123-45-67</a></li>
+            <li><a href="mailto:hello@auraflora.ru" class="footer__link">hello@auraflora.ru</a></li>
+            <li><a href="pages/info.html" class="footer__link">Ежедневно 9:00–21:00</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2025 Aura Flora. Все права защищены.</p>
+        <p class="footer__copy">Сделано с вниманием к красоте</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/main.js" defer></script>
+</body>
+</html>
